@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title>AngularJS - Curso</title> 
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/myApp.js"></script>
+	<script type="text/javascript" src="js/controller/formCtrl.js"></script>
+	<meta charset="UTF-8">
+</head>
+<body ng-controller="FormCtrl">
+	<div class="container">
+		<div class="jumbotron">		
+			<form id="form" class="jumbotron">	
+
+				<div class="row" ng-hide="clicouEditar" >
+				  	<h1 ng-bind="'Cadastrar'"></h1>
+					<div class="form-group col-sm-6 pull-left">
+						<label class="pull-left" for="nome">Nome:</label>
+						<input type="text" class="form-control pull-left" id="nome" ng-model="pessoa.nome" placeholder="nome"></input>
+					</div>
+					<div class="form-group col-sm-6 pull-left">
+						<label class="pull-left" for="email">E-mail:</label>
+						<input type="e-mail" class="form-control pull-left" id="mail" ng-model="pessoa.email" placeholder="e-mail"></input>
+					</div>
+					<div class="form-group col-sm-6 pull-left">
+						<label class="pull-left" for="telefone">Telefone:</label>
+						<input type="number" class="form-control pull-left" id="telefone" ng-model="pessoa.telefone" placeholder="telefone"></input>
+					</div>
+					<div class="col-xs-12">
+						<button class="btn-primary pull-right" ng-click="cadastranome(pessoa.nome, pessoa.email, pessoa.telefone)">Cadastrar</button>
+					</div>
+				</div>
+
+				<div class="row" ng-show="clicouEditar">
+					<h1 ng-bind="'Editar'"></h1>
+					<div class="form-group col-xs-8">
+						<label class="pull-left" for="nome">Nome:</label>
+						<input type="text" class="form-control" ng-model="name" ></input>
+						<label class="pull-left" for="nome">E-mail:</label>
+						<input type="text" class="form-control" ng-model="mail" ></input>
+						<label class="pull-left" for="nome">Telefone:</label>
+						<input type="text" class="form-control" ng-model="fone" ></input>
+					</div>
+					<div class="col-xs-12">
+						<button class="btn-primary pull-right" ng-click="renomearnome(name, mail, fone)">Salvar</button>
+					</div>
+					<div class="col-xs-12">
+						<button class="btn-danger pull-right" ng-click="cancelar()">Cancelar</button>
+					</div>
+				</div>	
+				<table class="table pull-right">				
+					<thead>
+						<tr>
+							<th>Nome</th>
+							<th>E-mail</th>
+							<th>Telefone</th>
+							<th>Opções</th>
+						</tr>
+					</thead>
+					<tbody>
+					<div class="container">
+						<tr ng-repeat= "item in list">
+							<td ng-bind="item.nomenome"></td>
+							<td ng-bind="item.email"></td>
+							<td ng-bind="item.telefone"></td>
+							<td>
+								<button class="btn btn-success" ng-click="editanome($index)">
+									<i class="glyphicon glyphicon-pencil"></i>
+								</button>	
+								<button class="btn btn-danger" ng-click="removenome($index)">
+									<i class="glyphicon glyphicon-trash"></i>
+								</button>						
+							</td>
+						</tr>
+					</div>
+					</tbody>
+				</table>
+
+				<div class="row" ng-if="semnomes">
+					<h1 class="text-center" >Sem nomes!!!</h1>
+				</div>						
+			</form>		
+			<hr>
+				
+			
+		</div>
+	</div>
+</body>
+</html>
